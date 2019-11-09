@@ -110,7 +110,7 @@ class HomeTableViewController: UITableViewController {
         
         cell.userNameLabel.text = user["name"] as? String
         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
-        let timeString = tweetArray[indexPath.row]["created_at"] as? String
+//        let timeString = tweetArray[indexPath.row]["created_at"] as? String
 //        let formatter = RelativeDateTimeFormatter()
 //        formatter.unitsStyle = .full
 //        let relativeDate = formatter.localizedString(for: timeString, relativeTo: Date())

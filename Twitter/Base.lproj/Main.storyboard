@@ -158,7 +158,7 @@
                                 <action selector="onLogout:" destination="no9-Kb-JQ8" id="WkY-dy-aD2"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="frI-pw-jua">
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" image="edit-icon" id="frI-pw-jua">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="0lQ-eV-gGL" kind="presentation" id="BsL-dZ-Ind"/>
@@ -175,11 +175,11 @@
             <objects>
                 <viewController id="ATq-f9-Y48" customClass="TweetViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HBd-QU-DTk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ubV-uK-vvU">
-                                <rect key="frame" x="0.0" y="56" width="375" height="150"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Share your tweet..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ubV-uK-vvU">
+                                <rect key="frame" x="110" y="54" width="255" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="hGe-NX-wBN"/>
@@ -188,17 +188,38 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nG7-Pq-MAk" userLabel="ProfileImage View">
+                                <rect key="frame" x="10" y="54" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="0gM-70-fYO"/>
+                                    <constraint firstAttribute="width" constant="90" id="OxZ-lJ-AI7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2G-r3-7lW" userLabel="countLabel">
+                                <rect key="frame" x="312" y="228" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="1Xp-gb-KYs"/>
+                                    <constraint firstAttribute="height" constant="21" id="PnG-KZ-Y1j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MNo-4f-TLp" firstAttribute="trailing" secondItem="ubV-uK-vvU" secondAttribute="trailing" id="DFh-bz-0O6"/>
-                            <constraint firstItem="ubV-uK-vvU" firstAttribute="top" secondItem="MNo-4f-TLp" secondAttribute="top" id="IOt-Hi-YeY"/>
-                            <constraint firstItem="ubV-uK-vvU" firstAttribute="leading" secondItem="MNo-4f-TLp" secondAttribute="leading" id="XwF-hN-7va"/>
+                            <constraint firstItem="ubV-uK-vvU" firstAttribute="leading" secondItem="nG7-Pq-MAk" secondAttribute="trailing" constant="10" id="0gr-Mr-UAj"/>
+                            <constraint firstItem="C2G-r3-7lW" firstAttribute="trailing" secondItem="ubV-uK-vvU" secondAttribute="trailing" id="Bjb-gE-3j7"/>
+                            <constraint firstItem="MNo-4f-TLp" firstAttribute="trailing" secondItem="ubV-uK-vvU" secondAttribute="trailing" constant="10" id="DFh-bz-0O6"/>
+                            <constraint firstItem="nG7-Pq-MAk" firstAttribute="leading" secondItem="MNo-4f-TLp" secondAttribute="leading" constant="10" id="EDn-CO-jeg"/>
+                            <constraint firstItem="ubV-uK-vvU" firstAttribute="top" secondItem="MNo-4f-TLp" secondAttribute="top" constant="10" id="IOt-Hi-YeY"/>
+                            <constraint firstItem="ubV-uK-vvU" firstAttribute="top" secondItem="nG7-Pq-MAk" secondAttribute="top" id="n1m-VO-E3Y"/>
+                            <constraint firstItem="C2G-r3-7lW" firstAttribute="top" secondItem="ubV-uK-vvU" secondAttribute="bottom" constant="24" id="oOp-UN-y37"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MNo-4f-TLp"/>
                     </view>
                     <navigationItem key="navigationItem" id="Y30-c3-Qxh">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="E5K-cB-B9P">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="close-icon" id="E5K-cB-B9P">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="onCancel:" destination="ATq-f9-Y48" id="xpw-0W-taa"/>
@@ -212,6 +233,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="countLabel" destination="C2G-r3-7lW" id="bL1-bC-JFw"/>
+                        <outlet property="profileImageView" destination="nG7-Pq-MAk" id="J6n-EP-NCl"/>
                         <outlet property="tweetTextView" destination="ubV-uK-vvU" id="xqf-CA-OFg"/>
                     </connections>
                 </viewController>
@@ -245,10 +268,10 @@
         <!--Tweet Navigation Controller-->
         <scene sceneID="dfx-F8-NIP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0lQ-eV-gGL" userLabel="Tweet Navigation Controller" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0lQ-eV-gGL" userLabel="Tweet Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SP6-Fn-ZkK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -263,6 +286,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close-icon" width="26" height="24"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
